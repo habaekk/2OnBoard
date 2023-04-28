@@ -18,4 +18,5 @@ With Calibration results, a number 2 is drawn on a chess board.
 ![calibration_screenshot](https://user-images.githubusercontent.com/74465964/235090786-64959db1-f54e-4eb7-bf66-40c6ea3d7889.jpg)  
 
 * Pose Estimation  
+** video DEMO: https://www.youtube.com/watch?v=oTKpX_Qczgc  
 ![2onBoard](https://user-images.githubusercontent.com/74465964/235090806-e9653b4b-0d2e-4311-aca5-c777bf0ce0ab.jpg)
