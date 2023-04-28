@@ -2,7 +2,8 @@
 
 ## Description
 Executable Python code for Camera Calibration and Pose Estimation using OpenCV.  
-With Calibration results, a number 2 is drawn on a chess board.
+With Calibration results, a number 2 is drawn on a chess board.  
+ChessBoard Source: https://markhedleyjones.com/projects/calibration-checkerboard-collection  
 
 ## K and coefficients
 * K  
