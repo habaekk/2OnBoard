@@ -1,7 +1,8 @@
 # 2OnBoard
 
 ## Description
-
+Executable Python code for Camera Calibration and Pose Estimation using OpenCV.  
+With Calibration results, a number 2 is drawn on a chess board.
 
 ## K and coefficients
 * K  
