@@ -34,13 +34,49 @@ while True:
     if complete:
         ret, rvec, tvec = cv.solvePnP(obj_points, img_points, K, dist_coeff)
 
-        # Draw the box on the image
+
+        
         line_lower, _ = cv.projectPoints(box_lower, rvec, tvec, K, dist_coeff)
         line_upper, _ = cv.projectPoints(box_upper, rvec, tvec, K, dist_coeff)
-        cv.polylines(img, [np.int32(line_lower)], True, (255, 0, 0), 2)
-        cv.polylines(img, [np.int32(line_upper)], True, (0, 0, 255), 2)
+
+
+        '''
+        # Draw the box on the image
+
+        cv.polylines(img, [np.int32(line_lower)], True, (255, 0, 0), 2) # bottom of the box
+        cv.polylines(img, [np.int32(line_upper)], True, (0, 0, 255), 2) # top of the box
         for b, t in zip(line_lower, line_upper):
-            cv.line(img, np.int32(b.flatten()), np.int32(t.flatten()), (0, 255, 0), 2)
+            cv.line(img, np.int32(b.flatten()), np.int32(t.flatten()), (0, 255, 0), 2) # vertical line
+        '''
+        # Draw a number
+
+        # pt1 ----- pt2
+        #            |
+        #            |
+        #            |
+        # pt5 ----- pt6
+        #  |
+        #  |
+        #  |
+        # pt4 ----- pt3
+
+
+        num_col = (255, 255, 255)
+
+        pt1 = (line_upper[0].flatten() + line_lower[0].flatten()) / 2
+        pt2 = (line_upper[1].flatten() + line_lower[1].flatten()) / 2
+
+        pt3 = (line_upper[2].flatten() + line_lower[2].flatten()) / 2
+        pt4 = (line_upper[3].flatten() + line_lower[3].flatten()) / 2
+
+        pt5 = (pt1 + pt4) / 2
+        pt6 = (pt2 + pt3) / 2
+
+        cv.line(img, np.int32(pt1) , np.int32(pt2), num_col, 2)
+        cv.line(img, np.int32(pt2) , np.int32(pt6), num_col, 2)
+        cv.line(img, np.int32(pt6) , np.int32(pt5), num_col, 2)
+        cv.line(img, np.int32(pt5) , np.int32(pt4), num_col, 2)
+        cv.line(img, np.int32(pt4) , np.int32(pt3), num_col, 2)
 
         # Print the camera position
         R, _ = cv.Rodrigues(rvec) # Alternative) scipy.spatial.transform.Rotation
